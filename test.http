@@ -1,4 +1,4 @@
-GET http://localhost:8080/productos/buscar?nombre=Camis
+GET http://localhost:8080/productos/buscar?nombre=test
 Accept: application/json
 
 ###
@@ -10,7 +10,7 @@ POST http://localhost:8080/categorias/add
 Content-Type: application/json
 
 {
-  "nombre": "Accesorios"
+  "nombre": "CatePruebas"
 }
 
 ###
@@ -23,10 +23,10 @@ POST http://localhost:8080/productos/add
 Content-Type: application/json
 
 {
-  "nombre": "test",
-  "descripcion": "Cosa erwin",
-  "precio": 1.0,
-  "idCategoria": 1
+  "nombre": "Hola Jhoan3",
+  "descripcion": "Hola3",
+  "precio": 100.0,
+  "idCategoria": 3
 }
 
 ###
