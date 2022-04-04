@@ -12,7 +12,7 @@ import ucb.edu.bo.storebackend.repo.ProductoEntityRepository;
 
 import java.util.Optional;
 
-
+@CrossOrigin(origins = "*",maxAge = 3600)
 @Controller
 @RequestMapping(path = "/productos")
 public class ProductoController {

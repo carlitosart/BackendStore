@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import ucb.edu.bo.storebackend.mapping.CategoriaEntity;
 import ucb.edu.bo.storebackend.repo.CategoriaEntityRepository;
 
+@CrossOrigin(origins = "*",maxAge = 3600)
 @Controller
 @RequestMapping(path = "/categorias")
 public class CategoriaController {
