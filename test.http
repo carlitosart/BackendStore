@@ -1,4 +1,4 @@
-GET http://localhost:8080/productos/buscarc?nompro=test
+GET http://localhost:8080/productos/buscarc?nompro=abc
 Accept: application/json
 
 ###
