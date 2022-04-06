@@ -1,5 +1,11 @@
+GET http://localhost:8080/productos/buscarc?nompro=test
+Accept: application/json
+
+###
+###
 GET http://localhost:8080/productos/buscar?nombre=test
 Accept: application/json
+
 
 ###
 GET http://localhost:8080/categorias/todos

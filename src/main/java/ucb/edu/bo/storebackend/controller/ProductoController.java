@@ -1,15 +1,13 @@
 package ucb.edu.bo.storebackend.controller;
 
 
-import antlr.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ucb.edu.bo.storebackend.mapping.ProductoEntity;
 import ucb.edu.bo.storebackend.repo.ProductoEntityRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @CrossOrigin(origins = "*",maxAge = 3600)
@@ -34,6 +32,13 @@ public class ProductoController {
     public @ResponseBody Iterable<ProductoEntity> getName(@RequestParam("nombre") String nombre){
 
         return productoEntityRepository.findByNombre(nombre);
+    }
+
+    @GetMapping(path = "/buscarc")
+    public @ResponseBody
+    List<Object> getProc(@RequestParam("nompro")String nompro){
+        return productoEntityRepository.getNomPro(nompro);
+
     }
 
     @GetMapping("/detail/{id}")
