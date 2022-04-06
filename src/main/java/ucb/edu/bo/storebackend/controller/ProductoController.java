@@ -4,6 +4,7 @@ package ucb.edu.bo.storebackend.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import ucb.edu.bo.storebackend.entityInterfaces.ProductInfoInterface;
 import ucb.edu.bo.storebackend.mapping.ProductoEntity;
 import ucb.edu.bo.storebackend.repo.ProductoEntityRepository;
 
@@ -36,7 +37,7 @@ public class ProductoController {
 
     @GetMapping(path = "/buscarc")
     public @ResponseBody
-    List<Object> getProc(@RequestParam("nompro")String nompro){
+    List<ProductInfoInterface> getProc(@RequestParam("nompro")String nompro){
         return productoEntityRepository.getNomPro(nompro);
 
     }
