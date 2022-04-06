@@ -63,9 +63,16 @@ public class ProductoController {
 
 
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable("id")int id){
+    public String delete(@PathVariable("id")int id){
 
-        productoEntityRepository.deleteById(id);
+       productoEntityRepository.deleteById(id);
+        return "successful removal";
+    }
+    
+    @GetMapping(path = "/categoria")
+    public @ResponseBody Iterable<ProductoEntity> getProductosCategoria(@RequestParam("id_categoria") int categoria){
+
+        return productoEntityRepository.findByIdCategoria(categoria);
     }
 
 
