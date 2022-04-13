@@ -1,18 +1,17 @@
 package ucb.edu.bo.storebackend.controller;
 
 
-import antlr.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import ucb.edu.bo.storebackend.entityInterfaces.ProductInfoInterface;
 import ucb.edu.bo.storebackend.mapping.ProductoEntity;
 import ucb.edu.bo.storebackend.repo.ProductoEntityRepository;
 
+import java.util.List;
 import java.util.Optional;
 
-
+@CrossOrigin(origins = "*",maxAge = 3600)
 @Controller
 @RequestMapping(path = "/productos")
 public class ProductoController {
@@ -34,6 +33,13 @@ public class ProductoController {
     public @ResponseBody Iterable<ProductoEntity> getName(@RequestParam("nombre") String nombre){
 
         return productoEntityRepository.findByNombre(nombre);
+    }
+
+    @GetMapping(path = "/buscarc")
+    public @ResponseBody
+    List<ProductInfoInterface> getProc(@RequestParam("nompro")String nompro){
+        return productoEntityRepository.getNomPro(nompro);
+
     }
 
     @GetMapping("/detail/{id}")
@@ -58,9 +64,13 @@ public class ProductoController {
 
     @DeleteMapping("/delete/{id}")
     public String delete(@PathVariable("id")int id){
-
-        productoEntityRepository.deleteById(id);
+       productoEntityRepository.deleteById(id);
         return "successful removal";
+    }
+    
+    @GetMapping(path = "/categoria")
+    public @ResponseBody Iterable<ProductoEntity> getProductosCategoria(@RequestParam("id_categoria") int categoria){
+        return productoEntityRepository.findByIdCategoria(categoria);
     }
 
 

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 GET http://localhost:8080/productos/buscarc?nompro=Ho
+=======
+GET http://localhost:8080/productos/buscarc?nompro=abc
+>>>>>>> 5cc40fba38cfa4fb30fa4e9a81f59337f65cdd30
 Accept: application/json
 
 ###
@@ -37,6 +41,11 @@ Content-Type: application/json
 
 ###
 
+<<<<<<< HEAD
+=======
+###
+
+>>>>>>> 5cc40fba38cfa4fb30fa4e9a81f59337f65cdd30
 GET http://localhost:8080/productos/categoria?id_categoria=1
 Accept: application/json
 
