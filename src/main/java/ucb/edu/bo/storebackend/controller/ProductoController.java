@@ -57,9 +57,10 @@ public class ProductoController {
 
 
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable("id")int id){
+    public String delete(@PathVariable("id")int id){
 
         productoEntityRepository.deleteById(id);
+        return "successful removal";
     }
 
 
