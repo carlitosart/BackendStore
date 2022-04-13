@@ -1,8 +1,6 @@
-<<<<<<< HEAD
+
 GET http://localhost:8080/productos/buscarc?nompro=Ho
-=======
-GET http://localhost:8080/productos/buscarc?nompro=abc
->>>>>>> 5cc40fba38cfa4fb30fa4e9a81f59337f65cdd30
+
 Accept: application/json
 
 ###
@@ -20,7 +18,7 @@ POST http://localhost:8080/categorias/add
 Content-Type: application/json
 
 {
-  "nombre": "CatePruebas"
+  "nombre": "CatPruebas"
 }
 
 ###
@@ -33,20 +31,16 @@ POST http://localhost:8080/productos/add
 Content-Type: application/json
 
 {
-  "nombre": "Ho",
-  "descripcion": "Hola3",
+  "nombre": "aaHo",
+  "descripcion": "aaaHola3",
   "precio": 100.0,
-  "idCategoria": 1
+  "idCategoria": 2
 }
 
 ###
 
-<<<<<<< HEAD
-=======
 ###
-
->>>>>>> 5cc40fba38cfa4fb30fa4e9a81f59337f65cdd30
-GET http://localhost:8080/productos/categoria?id_categoria=1
+GET http://localhost:8080/productos/categoria?id_categoria=2
 Accept: application/json
 
 ###
@@ -60,11 +54,11 @@ Content-Type: application/json
   "idCategoria": 1
 }
 ###
-DELETE http://localhost:8080/productos/delete/4
+DELETE http://localhost:8080/productos/delete/7
 ###
 
 ###
-GET http://localhost:8080/productos/detail/3
+GET http://localhost:8080/productos/detail/7
 ###
 
 

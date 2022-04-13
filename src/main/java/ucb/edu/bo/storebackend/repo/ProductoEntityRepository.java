@@ -23,9 +23,14 @@ public interface ProductoEntityRepository extends CrudRepository<ProductoEntity,
     //@Query(value = "SELECT * FROM tienda_online.producto where nombre = :nompro",nativeQuery = true)
     List<ProductInfoInterface> getNomPro(String nompro);
     
-     @Query(value = "DELETE FROM tienda_online.producto top WHERE top.id_producto = ?1",nativeQuery = true)
-    List<ProductInfoInterface> Deleteid(int id);
+    @Query(value = "DELETE FROM producto top WHERE id_producto = ?1",nativeQuery = true)
+    List<ProductInfoInterface> Delete_id(int id);
+
+
     public Iterable<ProductoEntity> findByIdCategoria(int idCategoria);
+
+
+
 
 }
 
