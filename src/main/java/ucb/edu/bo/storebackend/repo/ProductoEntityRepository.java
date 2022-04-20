@@ -3,6 +3,8 @@ package ucb.edu.bo.storebackend.repo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+
 import ucb.edu.bo.storebackend.entityInterfaces.ProductInfoInterface;
 import ucb.edu.bo.storebackend.mapping.ProductoEntity;
 
@@ -25,6 +27,10 @@ public interface ProductoEntityRepository extends CrudRepository<ProductoEntity,
     
     @Query(value = "DELETE FROM producto top WHERE id_producto = ?1",nativeQuery = true)
     List<ProductInfoInterface> Delete_id(int id);
+
+
+    @Query(value = "SELECT * from producto where nombre LIKE %:coincidencias%",nativeQuery = true)
+    List<ProductoEntity> findByCoincidencias(@Param("coincidencias") String coincidencias);
 
 
     public Iterable<ProductoEntity> findByIdCategoria(int idCategoria);

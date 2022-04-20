@@ -23,7 +23,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:8080/categorias/delete/7
+DELETE http://localhost:8080/categorias/delete/13
 Accept: application/json
 
 ###

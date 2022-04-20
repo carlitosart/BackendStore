@@ -72,7 +72,11 @@ public class ProductoController {
     public @ResponseBody Iterable<ProductoEntity> getProductosCategoria(@RequestParam("id_categoria") int categoria){
         return productoEntityRepository.findByIdCategoria(categoria);
     }
-
+    
+    @GetMapping(path = "/coincidencias")
+    public @ResponseBody Iterable<ProductoEntity> getCoincidencias(@RequestParam("coincidencias") String nombre){
+        return productoEntityRepository.findByCoincidencias(nombre);
+    }
 
 
 }
