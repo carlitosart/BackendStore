@@ -1,3 +1,18 @@
+POST http://localhost:8080/usuarios/add
+Content-Type: application/json
+
+{
+  "nombre": "Nom3",
+  "contraseña": "abc123",
+  "apellido": "Ape3",
+  "email": "email@gmail.com"
+}
+
+###
+DELETE http://localhost:8080/usuarios/delete/3
+Accept: application/json
+
+###
 GET http://localhost:8080/productos/buscarc?nompro=abc
 Accept: application/json
 
@@ -31,6 +46,8 @@ Content-Type: application/json
 {
   "nombre": "CatePruebas"
 }
+
+
 
 ###
 GET http://localhost:8080/productos/todos
