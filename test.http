@@ -61,4 +61,11 @@ DELETE http://localhost:8080/productos/delete/7
 GET http://localhost:8080/productos/detail/7
 ###
 
+POST http://localhost:8080/auth/login
+Content-Type: application/json
 
+{
+  "nombreUsuario": "admin",
+  "password": "admin"
+
+}
