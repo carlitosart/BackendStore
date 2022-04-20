@@ -3,11 +3,12 @@ package ucb.edu.bo.storebackend.repo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 import ucb.edu.bo.storebackend.entityInterfaces.ProductInfoInterface;
 import ucb.edu.bo.storebackend.mapping.ProductoEntity;
 
 import java.util.List;
-
+@Repository
 public interface ProductoEntityRepository extends CrudRepository<ProductoEntity, Integer> {
 
     public Iterable<ProductoEntity> findByNombre(String nombre);
