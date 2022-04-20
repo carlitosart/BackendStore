@@ -50,7 +50,7 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:8080/productos/todos
+GET http://localhost:8080/productos/todos?page=0&size=3
 Accept: application/json
 
 
