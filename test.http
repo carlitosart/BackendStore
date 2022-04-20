@@ -1,6 +1,25 @@
+<<<<<<< HEAD
 
 GET http://localhost:8080/productos/buscarc?nompro=Ho
 
+=======
+POST http://localhost:8080/usuarios/add
+Content-Type: application/json
+
+{
+  "nombre": "Nom3",
+  "contraseña": "abc123",
+  "apellido": "Ape3",
+  "email": "email@gmail.com"
+}
+
+###
+DELETE http://localhost:8080/usuarios/delete/3
+Accept: application/json
+
+###
+GET http://localhost:8080/productos/buscarc?nompro=abc
+>>>>>>> a0d66b904575b4cc52b3e9310e6ed525e58f0583
 Accept: application/json
 
 ###
@@ -34,8 +53,10 @@ Content-Type: application/json
   "nombre": "CatPruebas"
 }
 
+
+
 ###
-GET http://localhost:8080/productos/todos
+GET http://localhost:8080/productos/todos?page=0&size=3
 Accept: application/json
 
 

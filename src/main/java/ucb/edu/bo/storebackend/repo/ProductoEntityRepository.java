@@ -1,16 +1,19 @@
 package ucb.edu.bo.storebackend.repo;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import org.springframework.data.repository.PagingAndSortingRepository;
 import ucb.edu.bo.storebackend.entityInterfaces.ProductInfoInterface;
 import ucb.edu.bo.storebackend.mapping.ProductoEntity;
 
+
 import java.util.List;
 
-public interface ProductoEntityRepository extends CrudRepository<ProductoEntity, Integer> {
+public interface ProductoEntityRepository extends PagingAndSortingRepository<ProductoEntity, Integer> {
 
     public Iterable<ProductoEntity> findByNombre(String nombre);
     boolean existsByNombre(String nombre);
@@ -37,6 +40,7 @@ public interface ProductoEntityRepository extends CrudRepository<ProductoEntity,
 
 
 
+     public Page<ProductoEntity> findAll(Pageable pageable);
 
 }
 
