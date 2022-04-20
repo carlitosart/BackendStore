@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+
+GET http://localhost:8080/productos/buscarc?nompro=Ho
+
+=======
 POST http://localhost:8080/usuarios/add
 Content-Type: application/json
 
@@ -14,6 +19,7 @@ Accept: application/json
 
 ###
 GET http://localhost:8080/productos/buscarc?nompro=abc
+>>>>>>> a0d66b904575b4cc52b3e9310e6ed525e58f0583
 Accept: application/json
 
 ###
@@ -36,7 +42,7 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:8080/categorias/delete/7
+DELETE http://localhost:8080/categorias/delete/13
 Accept: application/json
 
 ###
@@ -44,7 +50,7 @@ POST http://localhost:8080/categorias/add
 Content-Type: application/json
 
 {
-  "nombre": "CatePruebas"
+  "nombre": "CatPruebas"
 }
 
 
@@ -59,17 +65,16 @@ POST http://localhost:8080/productos/add
 Content-Type: application/json
 
 {
-  "nombre": "Hola Jhoan3",
-  "descripcion": "Hola3",
+  "nombre": "aaHo",
+  "descripcion": "aaaHola3",
   "precio": 100.0,
-  "idCategoria": 3
+  "idCategoria": 2
 }
 
 ###
 
 ###
-
-GET http://localhost:8080/productos/categoria?id_categoria=1
+GET http://localhost:8080/productos/categoria?id_categoria=2
 Accept: application/json
 
 ###
@@ -83,11 +88,18 @@ Content-Type: application/json
   "idCategoria": 1
 }
 ###
-DELETE http://localhost:8080/productos/delete/4
+DELETE http://localhost:8080/productos/delete/7
 ###
 
 ###
-GET http://localhost:8080/productos/detail/3
+GET http://localhost:8080/productos/detail/7
 ###
 
+POST http://localhost:8080/auth/login
+Content-Type: application/json
 
+{
+  "nombreUsuario": "admin",
+  "password": "admin"
+
+}

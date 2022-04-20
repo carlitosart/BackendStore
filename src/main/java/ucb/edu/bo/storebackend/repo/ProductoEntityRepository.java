@@ -3,6 +3,9 @@ package ucb.edu.bo.storebackend.repo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
+
 import org.springframework.data.repository.PagingAndSortingRepository;
 import ucb.edu.bo.storebackend.entityInterfaces.ProductInfoInterface;
 import ucb.edu.bo.storebackend.mapping.ProductoEntity;
@@ -17,15 +20,27 @@ public interface ProductoEntityRepository extends PagingAndSortingRepository<Pro
 
     List<Object> getByNombre(String nombre);
 
+
+
+
     @Query(value = "SELECT top.id_producto idProducto,top.nombre,top.descripcion, top.precio,top.id_categoria idCategoria, tienda_online.disponibilidad.stock,  tienda_online.color.nombre as color, tienda_online.talla.nombre as talla  FROM tienda_online.producto  top INNER JOIN tienda_online.disponibilidad  ON top.id_producto = tienda_online.disponibilidad.id_producto  INNER JOIN tienda_online.color  ON tienda_online.disponibilidad.id_color  = tienda_online.color.id_color  INNER JOIN tienda_online.talla  ON tienda_online.disponibilidad.id_talla  = tienda_online.talla.id_talla  WHERE top.nombre = ?1",nativeQuery = true)
 
     //@Query(value = "SELECT * FROM tienda_online.producto where nombre = :nompro",nativeQuery = true)
     List<ProductInfoInterface> getNomPro(String nompro);
     
-     @Query(value = "DELETE FROM tienda_online.producto top WHERE top.id_producto = ?1",nativeQuery = true)
-    List<ProductInfoInterface> Deleteid(int id);
+    @Query(value = "DELETE FROM producto top WHERE id_producto = ?1",nativeQuery = true)
+    List<ProductInfoInterface> Delete_id(int id);
+
+
+    @Query(value = "SELECT * from producto where nombre LIKE %:coincidencias%",nativeQuery = true)
+    List<ProductoEntity> findByCoincidencias(@Param("coincidencias") String coincidencias);
+
+
     public Iterable<ProductoEntity> findByIdCategoria(int idCategoria);
+
+
 
      public Page<ProductoEntity> findAll(Pageable pageable);
 
 }
+

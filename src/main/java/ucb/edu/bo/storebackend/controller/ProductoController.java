@@ -70,17 +70,19 @@ public class ProductoController {
 
     @DeleteMapping("/delete/{id}")
     public String delete(@PathVariable("id")int id){
-
-       productoEntityRepository.deleteById(id);
+       productoEntityRepository.Delete_id(id);
         return "successful removal";
     }
     
     @GetMapping(path = "/categoria")
     public @ResponseBody Iterable<ProductoEntity> getProductosCategoria(@RequestParam("id_categoria") int categoria){
-
         return productoEntityRepository.findByIdCategoria(categoria);
     }
-
+    
+    @GetMapping(path = "/coincidencias")
+    public @ResponseBody Iterable<ProductoEntity> getCoincidencias(@RequestParam("coincidencias") String nombre){
+        return productoEntityRepository.findByCoincidencias(nombre);
+    }
 
 
 }
