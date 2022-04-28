@@ -16,11 +16,11 @@ public class UsuarioController {
     @Autowired
     private UsuariRepository usuarioRepository;
 
-    @PostMapping(path = "/add")
+    /*@PostMapping(path = "/add")
     public @ResponseBody
     UsuarioEntity addNewUsuario (@RequestBody UsuarioEntity usuario){
         return UsuariRepository.save(usuario);
 
-    }
+    }*/
 
 }
