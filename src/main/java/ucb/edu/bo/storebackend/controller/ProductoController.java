@@ -9,9 +9,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ucb.edu.bo.storebackend.entityInterfaces.ProductInfoInterface;
 import ucb.edu.bo.storebackend.mapping.ProductoEntity;
+import ucb.edu.bo.storebackend.objAux.disponibilidadAux;
 import ucb.edu.bo.storebackend.repo.ProductoEntityRepository;
 
-
+import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -84,5 +86,26 @@ public class ProductoController {
         return productoEntityRepository.findByCoincidencias(nombre);
     }
 
-
+    @GetMapping(path = "/productosSinStock")
+    public @ResponseBody Iterable<disponibilidadAux> getProductosSinStock(){
+        List<Object>lista= productoEntityRepository.findByProductosSinStock();
+        ArrayList<disponibilidadAux>listaDA=new ArrayList<>();
+        for(Object e:lista){
+            Object[]l=(Object[])e;
+            disponibilidadAux da=new disponibilidadAux(l[0],""+l[1],l[2], ""+l[3], l[4],"" + l[5], l[6], l[7]);
+            listaDA.add(da);
+        }
+        return listaDA;
+    }
+    @GetMapping(path = "/productosPocoStock")
+    public @ResponseBody Iterable<disponibilidadAux> productosPocoStock(){
+        List<Object>lista= productoEntityRepository.findByProductosPocoStock();
+        ArrayList<disponibilidadAux>listaDA=new ArrayList<>();
+        for(Object e:lista){
+            Object[]l=(Object[])e;
+            disponibilidadAux da=new disponibilidadAux(l[0],""+l[1],l[2], ""+l[3], l[4],"" + l[5], l[6], l[7]);
+            listaDA.add(da);
+        }
+        return listaDA;
+    }
 }

@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import ucb.edu.bo.storebackend.entityInterfaces.ProductInfoInterface;
 import ucb.edu.bo.storebackend.mapping.ProductoEntity;
-
+import ucb.edu.bo.storebackend.objAux.disponibilidadAux;
 
 import java.util.List;
 
@@ -35,7 +35,28 @@ public interface ProductoEntityRepository extends PagingAndSortingRepository<Pro
     @Query(value = "SELECT * from producto where nombre LIKE %:coincidencias%",nativeQuery = true)
     List<ProductoEntity> findByCoincidencias(@Param("coincidencias") String coincidencias);
 
+    @Query(value = "SELECT d.id_producto as idProducto,p.nombre as nombreProducto,d.id_color as idColor,c.nombre as nombreColor,d.id_talla as idTalla,t.nombre as nombreTalla,d.stock as stock,d.id_disponiblidad as idDisponibilidad"
+    +" from disponibilidad d"
+    +" JOIN producto p"
+    +" ON p.id_producto=d.id_producto"
+    +" JOIN talla t"
+    +" ON t.id_talla=d.id_talla"
+    +" JOIN color c"
+    +" ON c.id_color=d.id_color"
+    +" where stock=0",nativeQuery = true)
+    List<Object> findByProductosSinStock();
 
+
+    @Query(value = "SELECT d.id_producto as idProducto,p.nombre as nombreProducto,d.id_color as idColor,c.nombre as nombreColor,d.id_talla as idTalla,t.nombre as nombreTalla,d.stock as stock,d.id_disponiblidad as idDisponibilidad"
+    +" from disponibilidad d"
+    +" JOIN producto p"
+    +" ON p.id_producto=d.id_producto"
+    +" JOIN talla t"
+    +" ON t.id_talla=d.id_talla"
+    +" JOIN color c"
+    +" ON c.id_color=d.id_color"
+    +" where stock<=0",nativeQuery = true)
+    List<Object> findByProductosPocoStock();
     public Iterable<ProductoEntity> findByIdCategoria(int idCategoria);
 
 
