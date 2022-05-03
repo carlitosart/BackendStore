@@ -55,7 +55,7 @@ public interface ProductoEntityRepository extends PagingAndSortingRepository<Pro
     +" ON t.id_talla=d.id_talla"
     +" JOIN color c"
     +" ON c.id_color=d.id_color"
-    +" where stock<=0",nativeQuery = true)
+    +" where stock<=10",nativeQuery = true)
     List<Object> findByProductosPocoStock();
     public Iterable<ProductoEntity> findByIdCategoria(int idCategoria);
 
