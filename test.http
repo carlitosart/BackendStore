@@ -70,5 +70,10 @@ Content-Type: application/json
 
 }
 
-###
+###ver todas la ventas
 GET http://localhost:8080/ventas/todos
+
+### baja logica
+
+DELETE http://localhost:8080/productos/delete/7
+###
