@@ -66,14 +66,27 @@ public class ProductoController {
         producto.setDescripcion(productoDto.getDescripcion());
         producto.setIdCategoria(productoDto.getIdCategoria());
         producto.setPrecio(productoDto.getPrecio());
+        producto.setDescuento(productoDto.getDescuento());
+        producto.setDisponibilidad(producto.getDisponibilidad());
         return productoEntityRepository.save(producto);
     }
 
 
     @DeleteMapping("/delete/{id}")
-    public String delete(@PathVariable("id")int id){
-       productoEntityRepository.Delete_id(id);
-        return "successful removal";
+    public @ResponseBody ProductoEntity delete(@PathVariable("id")int id){
+
+        Optional<ProductoEntity> productoDto= productoEntityRepository.findById(id);
+
+        ProductoEntity producto=new ProductoEntity();
+        producto.setIdProducto(id);
+        producto.setNombre(productoDto.get().getNombre());
+        producto.setDescripcion(productoDto.get().getDescripcion());
+        producto.setIdCategoria(productoDto.get().getIdCategoria());
+        producto.setPrecio(productoDto.get().getPrecio());
+        producto.setDescuento(productoDto.get().getDescuento());
+        producto.setDisponibilidad(false);
+
+        return productoEntityRepository.save(producto);
     }
     
     @GetMapping(path = "/categoria")

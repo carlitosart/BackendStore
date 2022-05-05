@@ -106,3 +106,11 @@ GET http://localhost:8080/productos/productosSinStock
 
 ###
 GET http://localhost:8080/productos/productosPocoStock
+
+###ver todas la ventas
+GET http://localhost:8080/ventas/todos
+
+### baja logica
+
+DELETE http://localhost:8080/productos/delete/7
+###

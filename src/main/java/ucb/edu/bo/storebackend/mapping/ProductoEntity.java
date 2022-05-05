@@ -23,6 +23,30 @@ public class ProductoEntity {
     @Column(name = "id_categoria")
     private Integer idCategoria;
 
+    @Basic
+    @Column(name = "disponibilidad")
+    private Boolean disponibilidad;
+
+    @Basic
+    @Column(name = "descuento")
+    private Double descuento;
+
+    public Double getDescuento() {
+        return descuento;
+    }
+
+    public void setDescuento(Double descuento) {
+        this.descuento = descuento;
+    }
+
+    public Boolean getDisponibilidad() {
+        return disponibilidad;
+    }
+
+    public void setDisponibilidad(Boolean disponibilidad) {
+        this.disponibilidad = disponibilidad;
+    }
+
     public int getIdProducto() {
         return idProducto;
     }
