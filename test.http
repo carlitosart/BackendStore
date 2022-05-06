@@ -108,12 +108,12 @@ GET http://localhost:8080/productos/categoria?id_categoria=6
 Accept: application/json
 
 ###
-PUT http://localhost:8080/productos/update/35
+PUT http://localhost:8080/productos/update/7
 Content-Type: application/json
 
 {
-  "nombre": "Hola Jhoan2",
-  "descripcion": "Hola2",
+  "nombre": "Test 7",
+  "descripcion": "Hola7",
   "precio": 10,
   "idCategoria": 1,
   "descuento":70,

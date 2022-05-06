@@ -70,7 +70,7 @@ public class ProductoController {
         producto.setIdCategoria(productoDto.getIdCategoria());
         producto.setPrecio(productoDto.getPrecio());
         producto.setDescuento(productoDto.getDescuento());
-        producto.setDisponibilidad(producto.getDisponibilidad());
+        producto.setDisponibilidad(productoDto.getDisponibilidad());
         return productoEntityRepository.save(producto);
     }
 
