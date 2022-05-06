@@ -70,7 +70,7 @@ public class ProductoController {
         producto.setIdCategoria(productoDto.getIdCategoria());
         producto.setPrecio(productoDto.getPrecio());
         producto.setDescuento(productoDto.getDescuento());
-        producto.setDisponibilidad(producto.getDisponibilidad());
+        producto.setDisponibilidad(productoDto.getDisponibilidad());
         return productoEntityRepository.save(producto);
     }
 
@@ -108,7 +108,7 @@ public class ProductoController {
         return productoEntityRepository.save(producto);
     }
     @PutMapping("/deshabilitar/{id}")
-    public @ResponseBody ProductoEntity puDeshabilitar(@PathVariable("id")int id){
+    public @ResponseBody ProductoEntity putDeshabilitar(@PathVariable("id")int id){
 
         Optional<ProductoEntity> productoDto= productoEntityRepository.findById(id);
 
@@ -119,7 +119,7 @@ public class ProductoController {
         producto.setIdCategoria(productoDto.get().getIdCategoria());
         producto.setPrecio(productoDto.get().getPrecio());
         producto.setDescuento(productoDto.get().getDescuento());
-        producto.setDisponibilidad(productoDto.get().getDisponibilidad());
+        producto.setDisponibilidad(false);
 
         return productoEntityRepository.save(producto);
     }
