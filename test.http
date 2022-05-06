@@ -20,6 +20,10 @@ Content-Type: application/json
 ###
 
 GET http://localhost:8080/productos/buscarc?nompro=Ho
+
+###
+GET http://localhost:8080/productos/buscarc?nompro=Dillenius' Speedwell
+
 ###
 
 POST http://localhost:8080/usuarios/add

@@ -6,6 +6,10 @@ public interface ProductInfoInterface {
     String getDescripcion();
     Double getPrecio();
     Integer getIdCategoria();
+    Double getDescuento();
+    Boolean getDisponibilidad();
+    String getCategoria();
+    Integer getIdDisponibilidad();
     Integer getStock();
     String getColor();
     String getTalla();
