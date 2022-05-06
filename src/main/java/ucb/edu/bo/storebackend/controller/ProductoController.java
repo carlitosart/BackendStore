@@ -7,6 +7,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import lombok.extern.java.Log;
 import ucb.edu.bo.storebackend.entityInterfaces.ProductInfoInterface;
 import ucb.edu.bo.storebackend.mapping.ProductoEntity;
 import ucb.edu.bo.storebackend.objAux.disponibilidadAux;
@@ -117,7 +119,7 @@ public class ProductoController {
         producto.setIdCategoria(productoDto.get().getIdCategoria());
         producto.setPrecio(productoDto.get().getPrecio());
         producto.setDescuento(productoDto.get().getDescuento());
-        producto.setDisponibilidad(false);
+        producto.setDisponibilidad(productoDto.get().getDisponibilidad());
 
         return productoEntityRepository.save(producto);
     }
