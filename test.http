@@ -53,7 +53,7 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:8080/productos/todos?page=0&size=3
+GET http://localhost:8080/productos/todos?page=1&size=3
 Accept: application/json
 
 
@@ -112,5 +112,14 @@ GET http://localhost:8080/ventas/todos
 
 ### baja logica
 
-DELETE http://localhost:8080/productos/delete/7
+DELETE http://localhost:8080/productos/delete/3
 ###
+
+
+### Habilitar producto
+
+PUT http://localhost:8080/productos/habilitar/3
+
+### Deshabilitar producto
+
+PUT  http://localhost:8080/productos/deshabilitar/3

@@ -88,7 +88,40 @@ public class ProductoController {
 
         return productoEntityRepository.save(producto);
     }
-    
+    @PutMapping("/habilitar/{id}")
+    public @ResponseBody ProductoEntity putHabilitar(@PathVariable("id")int id){
+
+        Optional<ProductoEntity> productoDto= productoEntityRepository.findById(id);
+
+        ProductoEntity producto=new ProductoEntity();
+        producto.setIdProducto(id);
+        producto.setNombre(productoDto.get().getNombre());
+        producto.setDescripcion(productoDto.get().getDescripcion());
+        producto.setIdCategoria(productoDto.get().getIdCategoria());
+        producto.setPrecio(productoDto.get().getPrecio());
+        producto.setDescuento(productoDto.get().getDescuento());
+        producto.setDisponibilidad(true);
+
+        return productoEntityRepository.save(producto);
+    }
+    @PutMapping("/deshabilitar/{id}")
+    public @ResponseBody ProductoEntity puDeshabilitar(@PathVariable("id")int id){
+
+        Optional<ProductoEntity> productoDto= productoEntityRepository.findById(id);
+
+        ProductoEntity producto=new ProductoEntity();
+        producto.setIdProducto(id);
+        producto.setNombre(productoDto.get().getNombre());
+        producto.setDescripcion(productoDto.get().getDescripcion());
+        producto.setIdCategoria(productoDto.get().getIdCategoria());
+        producto.setPrecio(productoDto.get().getPrecio());
+        producto.setDescuento(productoDto.get().getDescuento());
+        producto.setDisponibilidad(false);
+
+        return productoEntityRepository.save(producto);
+    }
+
+
     @GetMapping(path = "/categoria")
     public @ResponseBody Iterable<ProductoEntity> getProductosCategoria(@RequestParam("id_categoria") int categoria){
         return productoEntityRepository.findByIdCategoria(categoria);
