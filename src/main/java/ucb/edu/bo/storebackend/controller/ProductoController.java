@@ -37,6 +37,7 @@ public class ProductoController {
         return productoEntityRepository.findAll(pageable);
     }
 
+
     @GetMapping(path = "/buscar")
     public @ResponseBody Iterable<ProductoEntity> getName(@RequestParam("nombre") String nombre){
 
@@ -154,4 +155,5 @@ public class ProductoController {
         }
         return listaDA;
     }
+
 }
