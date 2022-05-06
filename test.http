@@ -1,3 +1,23 @@
+POST http://localhost:8080/comprapr/add
+Content-Type: application/json
+
+{
+  "idDisponibilidad": 1,
+  "cantidad": 1,
+  "idCompra": 2
+}
+
+###
+POST http://localhost:8080/compra/add
+Content-Type: application/json
+
+{
+  "fecha": 1564061013564,
+  "idUsuario": 1,
+  "costoTotal": 15.5
+}
+
+###
 
 GET http://localhost:8080/productos/buscarc?nompro=Ho
 

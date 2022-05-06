@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import ucb.edu.bo.storebackend.mapping.Compra;
-import ucb.edu.bo.storebackend.repo.CompraRepository;
+import ucb.edu.bo.storebackend.mapping.CompraEntity;
+import ucb.edu.bo.storebackend.repo.CompraEntityRepository;
 
 import java.util.List;
 
@@ -17,13 +17,13 @@ import java.util.List;
 public class VentaController {
 
     @Autowired
-    private CompraRepository compraRepository;
+    private CompraEntityRepository compraEntityRepository;
 
     @GetMapping(path = "/todos")
     public @ResponseBody
-    List<Compra> getAllProductos() {
+    List<CompraEntity> getAllProductos() {
         // This returns a JSON or XML with the users
-        return compraRepository.findAll();
+        return compraEntityRepository.findAll();
     }
 
 }
