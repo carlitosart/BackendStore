@@ -96,7 +96,9 @@ Content-Type: application/json
   "nombre": "aaHo",
   "descripcion": "aaaHola3",
   "precio": 100.0,
-  "idCategoria": 2
+  "idCategoria": 2,
+  "disponibilidad":1,
+  "descuento":20
 }
 
 ###
@@ -106,14 +108,15 @@ GET http://localhost:8080/productos/categoria?id_categoria=6
 Accept: application/json
 
 ###
-PUT http://localhost:8080/productos/update/2
+PUT http://localhost:8080/productos/update/33
 Content-Type: application/json
 
 {
   "nombre": "Hola Jhoan2",
   "descripcion": "Hola2",
   "precio": 10,
-  "idCategoria": 1
+  "idCategoria": 1,
+  "descuento":70
 }
 ###
 DELETE http://localhost:8080/productos/delete/7
