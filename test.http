@@ -20,6 +20,7 @@ Content-Type: application/json
 ###
 
 GET http://localhost:8080/productos/buscarc?nompro=Ho
+###
 
 POST http://localhost:8080/usuarios/add
 Content-Type: application/json
@@ -28,7 +29,10 @@ Content-Type: application/json
   "nombre": "Nom3",
   "contraseña": "abc123",
   "apellido": "Ape3",
-  "email": "email@gmail.com"
+  "email": "email@gmail.com",
+  "id":1,
+  "nombre_usuario":"nom-us-1",
+  "password":"abc123"
 }
 
 ###
@@ -129,6 +133,10 @@ GET http://localhost:8080/productos/productosPocoStock
 
 ###ver todas la ventas
 GET http://localhost:8080/ventas/todos
+
+###Ver ventas de productos
+GET http://localhost:8080/ventas/productos/todos
+
 
 ### baja logica
 
