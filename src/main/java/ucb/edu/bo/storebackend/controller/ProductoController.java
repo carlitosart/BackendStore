@@ -2,6 +2,9 @@ package ucb.edu.bo.storebackend.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ucb.edu.bo.storebackend.entityInterfaces.ProductInfoInterface;
@@ -24,10 +27,13 @@ public class ProductoController {
     }
 
     @GetMapping(path = "/todos")
-    public @ResponseBody Iterable<ProductoEntity> getAllProductos() {
+    public @ResponseBody
+    Page<ProductoEntity> getAllProductos(@RequestParam Integer page, @RequestParam Integer size) {
         // This returns a JSON or XML with the users
-        return productoEntityRepository.findAll();
+        Pageable pageable = PageRequest.of(page,size);
+        return productoEntityRepository.findAll(pageable);
     }
+
 
     @GetMapping(path = "/buscar")
     public @ResponseBody Iterable<ProductoEntity> getName(@RequestParam("nombre") String nombre){
@@ -86,6 +92,9 @@ public class ProductoController {
         return productoEntityRepository.findByIdCategoria(categoria);
     }
 
-
+    @GetMapping(path = "/coincidencias")
+    public @ResponseBody Iterable<ProductoEntity> getCoincidencias(@RequestParam("coincidencias") String nombre){
+        return productoEntityRepository.findByCoincidencias(nombre);
+    }
 
 }
