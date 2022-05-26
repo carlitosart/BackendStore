@@ -16,6 +16,10 @@ Content-Type: application/json
   "idUsuario": 1,
   "costoTotal": 15.5
 }
+###Obtener compras de un usuario por id
+GET http://localhost:8080/compra/todos/usuario/2
+Accept: application/json
+
 
 ###
 
@@ -38,7 +42,29 @@ Content-Type: application/json
   "nombre_usuario":"nom-us-1",
   "password":"abc123"
 }
+###
+POST http://localhost:8080/usuarios/add
+Content-Type: application/json
 
+{
+  "nombre": "Nom3",
+  "contraseña": "abc123",
+  "apellido": "Ape3",
+  "email": "email@gmail.com"
+}
+###Buscar usuario por id
+GET http://localhost:8080/usuarios/usuario/1
+Accept: application/json
+###Actualizar usuario por id
+PUT http://localhost:8080/usuarios/usuario/1
+Content-Type: application/json
+
+{
+  "nombre": "Victor",
+  "contraseña": "abc123",
+  "apellido": "Ape3",
+  "email": "email@gmail.com"
+}
 ###
 DELETE http://localhost:8080/usuarios/delete/3
 Accept: application/json
