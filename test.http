@@ -24,7 +24,7 @@ Content-Type: application/json
 ###
 GET http://localhost:8080/productos/todos
 Accept: application/json
-
+Authorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjg4IiwiaWF0IjoxNjUwNDgxODUzLCJleHAiOjE2NTA1MTc4NTN9.mhb_p-oc5_o8X7c8v9s9Jp8-APF-W1K7hUyRZSJZfFJVz1NFMx38oQE0a_NBE8lKeE8sydm6j5KZQYML3bvLTQ
 
 ###
 POST http://localhost:8080/productos/add
@@ -57,13 +57,22 @@ Content-Type: application/json
 DELETE http://localhost:8080/productos/delete/7
 ###
 
+<<<<<<< HEAD
 ###
 GET http://localhost:8080/productos/detail/7
+=======
+GET http://localhost:8080/productos/detail/3
+>>>>>>> ce1ee06772fb6ff3b2144617baf267298a6577b8
 ###
+POST http://localhost:8080/auth/nuevo
+Content-Type: application/json
+
+{"nombre":"admin88","nombreUsuario": "admin88","email":"a@admin88","password": "admin88","roles":["admin","user"]}
 
 POST http://localhost:8080/auth/login
 Content-Type: application/json
 
+<<<<<<< HEAD
 {
   "nombreUsuario": "admin",
   "password": "admin"
@@ -77,3 +86,14 @@ GET http://localhost:8080/ventas/todos
 
 DELETE http://localhost:8080/productos/delete/7
 ###
+=======
+###
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+"nombreUsuario": "admin88",
+"password": "admin88"
+
+}
+>>>>>>> ce1ee06772fb6ff3b2144617baf267298a6577b8

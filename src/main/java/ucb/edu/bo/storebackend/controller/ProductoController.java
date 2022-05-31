@@ -8,6 +8,7 @@ import ucb.edu.bo.storebackend.entityInterfaces.ProductInfoInterface;
 import ucb.edu.bo.storebackend.mapping.ProductoEntity;
 import ucb.edu.bo.storebackend.repo.ProductoEntityRepository;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,7 +20,7 @@ public class ProductoController {
     private ProductoEntityRepository productoEntityRepository;
 
     @PostMapping(path = "/add")
-    public @ResponseBody ProductoEntity addNewProducto (@RequestBody ProductoEntity producto){
+    public @ResponseBody ProductoEntity addNewProducto (@Valid  @RequestBody ProductoEntity producto){
         return productoEntityRepository.save(producto);
     }
 

@@ -20,6 +20,23 @@ public class CategoriaController {
         return "Categoria Guardada";
     }
 
+    @DeleteMapping(path = "/delete/{id}")
+    public @ResponseBody String deleteCate(@PathVariable("id") Long id){
+        categoriaEntityRepository.deleteById(id);
+        return "Categora Eliminada Correctamente";
+    }
+
+    @PutMapping("/editar/{id}")
+    CategoriaEntity updateCate(@RequestBody CategoriaEntity newCate, @PathVariable Long id){
+        return categoriaEntityRepository.findById(id).map(categoria -> {
+            categoria.setNombre(newCate.getNombre());
+            return categoriaEntityRepository.save(newCate);
+        }).orElseGet(()->{
+           return categoriaEntityRepository.save(newCate);
+        });
+    }
+
+
     @GetMapping(path = "todos")
     public @ResponseBody Iterable<CategoriaEntity> getAllCategoria(){
         return categoriaEntityRepository.findAll();
