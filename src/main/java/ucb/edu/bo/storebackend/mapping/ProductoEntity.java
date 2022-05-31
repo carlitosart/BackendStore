@@ -1,6 +1,9 @@
 package ucb.edu.bo.storebackend.mapping;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.Type;
+
 import java.util.Objects;
 
 @Entity
@@ -24,7 +27,8 @@ public class ProductoEntity {
     private Integer idCategoria;
 
     @Basic
-    @Column(name = "disponibilidad")
+    @Column(nullable = false,name = "disponibilidad")
+    @Type(type = "org.hibernate.type.NumericBooleanType")
     private Boolean disponibilidad;
 
     @Basic

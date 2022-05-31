@@ -1,7 +1,54 @@
+POST http://localhost:8080/comprapr/add
+Content-Type: application/json
+
+{
+  "idDisponibilidad": 1,
+  "cantidad": 1,
+  "idCompra": 2
+}
+
+###
+POST http://localhost:8080/compra/add
+Content-Type: application/json
+
+{
+  "fecha": 1564061013564,
+  "idUsuario": 1,
+  "costoTotal": 15.5
+}
+
+###
 
 GET http://localhost:8080/productos/buscarc?nompro=Ho
 
+###
+GET http://localhost:8080/productos/buscarc?nompro=Dillenius' Speedwell
+
+###
+
+POST http://localhost:8080/usuarios/add
+Content-Type: application/json
+
+{
+  "nombre": "Nom3",
+  "contraseña": "abc123",
+  "apellido": "Ape3",
+  "email": "email@gmail.com",
+  "id":1,
+  "nombre_usuario":"nom-us-1",
+  "password":"abc123"
+}
+
+###
+DELETE http://localhost:8080/usuarios/delete/3
 Accept: application/json
+
+###
+GET http://localhost:8080/productos/buscarc?nompro=abc
+Accept: application/json
+###Productos por categoria
+GET http://localhost:8080/productos/categoria
+
 
 ###
 ###
@@ -14,6 +61,19 @@ GET http://localhost:8080/categorias/todos
 Accept: application/json
 
 ###
+PUT http://localhost:8080/categorias/editar/3
+Accept: application/json
+Content-Type: application/json
+
+{
+  "nombre": "BobSpioja"
+}
+
+###
+DELETE http://localhost:8080/categorias/delete/13
+Accept: application/json
+
+###
 POST http://localhost:8080/categorias/add
 Content-Type: application/json
 
@@ -21,8 +81,10 @@ Content-Type: application/json
   "nombre": "CatPruebas"
 }
 
+
+
 ###
-GET http://localhost:8080/productos/todos
+GET http://localhost:8080/productos/todos?page=1&size=3
 Accept: application/json
 Authorization: eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjg4IiwiaWF0IjoxNjUwNDgxODUzLCJleHAiOjE2NTA1MTc4NTN9.mhb_p-oc5_o8X7c8v9s9Jp8-APF-W1K7hUyRZSJZfFJVz1NFMx38oQE0a_NBE8lKeE8sydm6j5KZQYML3bvLTQ
 
@@ -34,24 +96,28 @@ Content-Type: application/json
   "nombre": "aaHo",
   "descripcion": "aaaHola3",
   "precio": 100.0,
-  "idCategoria": 2
+  "idCategoria": 2,
+  "disponibilidad":1,
+  "descuento":20
 }
 
 ###
 
 ###
-GET http://localhost:8080/productos/categoria?id_categoria=2
+GET http://localhost:8080/productos/categoria?id_categoria=6
 Accept: application/json
 
 ###
-PUT http://localhost:8080/productos/update/2
+PUT http://localhost:8080/productos/update/7
 Content-Type: application/json
 
 {
-  "nombre": "Hola Jhoan2",
-  "descripcion": "Hola2",
+  "nombre": "Test 7",
+  "descripcion": "Hola7",
   "precio": 10,
-  "idCategoria": 1
+  "idCategoria": 1,
+  "descuento":70,
+  "disponibilidad":0
 }
 ###
 DELETE http://localhost:8080/productos/delete/7
@@ -78,12 +144,23 @@ Content-Type: application/json
   "password": "admin"
 
 }
+###
+
+GET http://localhost:8080/productos/productosSinStock
+
+###
+GET http://localhost:8080/productos/productosPocoStock
 
 ###ver todas la ventas
 GET http://localhost:8080/ventas/todos
 
+###Ver ventas de productos
+GET http://localhost:8080/ventas/productos/todos
+
+
 ### baja logica
 
+<<<<<<< HEAD
 DELETE http://localhost:8080/productos/delete/7
 ###
 =======
@@ -97,3 +174,16 @@ Content-Type: application/json
 
 }
 >>>>>>> ce1ee06772fb6ff3b2144617baf267298a6577b8
+=======
+DELETE http://localhost:8080/productos/delete/3
+###
+
+
+### Habilitar producto
+
+PUT http://localhost:8080/productos/habilitar/3
+
+### Deshabilitar producto
+
+PUT  http://localhost:8080/productos/deshabilitar/3
+>>>>>>> 39bc52ecacf7860627ae3aab9872f9e945196e54

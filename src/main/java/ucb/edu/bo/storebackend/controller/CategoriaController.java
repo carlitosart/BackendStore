@@ -41,4 +41,20 @@ public class CategoriaController {
     public @ResponseBody Iterable<CategoriaEntity> getAllCategoria(){
         return categoriaEntityRepository.findAll();
     }
+
+    @DeleteMapping(path = "/delete/{id}")
+    public @ResponseBody String deleteCate(@PathVariable("id") Long id){
+        categoriaEntityRepository.deleteById(id);
+        return "Categora Eliminada Correctamente";
+    }
+
+    @PutMapping("/editar/{id}")
+    public @ResponseBody CategoriaEntity updateCate(@RequestBody CategoriaEntity newCate, @PathVariable Long id){
+        return categoriaEntityRepository.findById(id).map(categoria -> {
+            categoria.setNombre(newCate.getNombre());
+            return categoriaEntityRepository.save(categoria);
+        }).orElseGet(()->{
+            return categoriaEntityRepository.save(newCate);
+        });
+    }
 }
