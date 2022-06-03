@@ -3,6 +3,9 @@ package ucb.edu.bo.storebackend.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ucb.edu.bo.storebackend.mapping.UsuarioEntity;
@@ -15,6 +18,14 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioEntityRepository usuarioEntityRepository;
+
+    @GetMapping(path = "/todos")
+    public @ResponseBody
+    Page<UsuarioEntity> getAllUsuarios(@RequestParam Integer page, @RequestParam Integer size) {
+        // This returns a JSON or XML with the users
+        Pageable pageable = PageRequest.of(page,size);
+        return usuarioEntityRepository.findAll(pageable);
+    }
 
     @PostMapping(path = "/add")
     public @ResponseBody UsuarioEntity addUsuario (@RequestBody UsuarioEntity usuario){

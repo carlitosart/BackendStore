@@ -70,6 +70,11 @@ DELETE http://localhost:8080/usuarios/delete/3
 Accept: application/json
 
 ###
+
+GET http://localhost:8080/usuarios/todos?page=1&size=10
+Accept: application/json
+
+###
 GET http://localhost:8080/productos/buscarc?nompro=abc
 Accept: application/json
 ###Productos por categoria
