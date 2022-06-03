@@ -54,7 +54,9 @@ Content-Type: application/json
 }
 ###Buscar usuario por id
 GET http://localhost:8080/usuarios/usuario/2
+###
 
+GET http://localhost:8080/usuarios/comentarios/usuario/2
 ###Actualizar usuario por id
 PUT http://localhost:8080/usuarios/usuario/1
 Content-Type: application/json

@@ -1,5 +1,6 @@
 package ucb.edu.bo.storebackend.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ucb.edu.bo.storebackend.mapping.UsuarioEntity;
 import ucb.edu.bo.storebackend.repo.UsuarioEntityRepository;
+import ucb.edu.bo.storebackend.repo.UsuarioEntityRepositorySinJPA;
 
 @CrossOrigin(origins = "*",maxAge = 3600)
 @Controller
@@ -18,6 +20,9 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioEntityRepository usuarioEntityRepository;
+
+    @Autowired
+    private UsuarioEntityRepositorySinJPA usuarioEntityRepositorySinJPA;
 
     @GetMapping(path = "/todos")
     public @ResponseBody
@@ -31,7 +36,10 @@ public class UsuarioController {
     public @ResponseBody UsuarioEntity addUsuario (@RequestBody UsuarioEntity usuario){
         return usuarioEntityRepository.save(usuario);
     }
-
+    @GetMapping("comentarios/usuario/{id}")
+    public @ResponseBody List<Object> getComentariosUsuario(@PathVariable("id")Long id){
+        return usuarioEntityRepositorySinJPA.getComentarioPorUsuario(id);
+    }
     @GetMapping("usuario/{id}")
     public @ResponseBody Optional<UsuarioEntity> getUser(@PathVariable("id")Long id){
         return usuarioEntityRepository.findById(id);
