@@ -10,14 +10,14 @@ import java.util.Objects;
 public class ComentarioEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "idComentarios")
-    private int idUsuario;
+    @Column(name = "idcomentarios")
+    private int idcomentarios;
     @Basic
     @Column(name = "contenido")
-    private String nombre;
+    private String contenido;
     @Basic
     @Column(name = "fecha")
-    private Timestamp fecha;
+    private String fecha;
     @Basic
     @Column(name = "usuario_id_usuario")
     private int usuario_id_usuario;
@@ -27,22 +27,22 @@ public class ComentarioEntity {
     @Basic
     @Column(name = "estado_comentario")
     private int estado_comentario;
-    public int getIdUsuario() {
-        return idUsuario;
+    public int getIdComentarios() {
+        return idcomentarios;
     }
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setIdComentarios(int idComentarios) {
+        this.idcomentarios = idComentarios;
     }
-    public String getNombre() {
-        return nombre;
+    public String getContenido() {
+        return contenido;
     }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setContenido(String contenido) {
+        this.contenido = contenido;
     }
-    public Timestamp getFecha() {
+    public String getFecha() {
         return fecha;
     }
-    public void setFecha(Timestamp fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
     }
     public int getUsuario_id_usuario() {
@@ -65,11 +65,8 @@ public class ComentarioEntity {
     }
     @Override
     public String toString() {
-        return "ComentarioEntity [estado_comentario=" + estado_comentario + ", fecha=" + fecha + ", idUsuario="
-                + idUsuario + ", nombre=" + nombre + ", producto_id_producto=" + producto_id_producto
+        return "ComentarioEntity [contenido=" + contenido + ", estado_comentario=" + estado_comentario + ", fecha="
+                + fecha + ", idComentarios=" + idcomentarios + ", producto_id_producto=" + producto_id_producto
                 + ", usuario_id_usuario=" + usuario_id_usuario + "]";
-    }
-
-   
-    
+    }   
 }

@@ -9,7 +9,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import ucb.edu.bo.storebackend.mapping.ComentarioEntity;
 import ucb.edu.bo.storebackend.mapping.UsuarioEntity;
+import ucb.edu.bo.storebackend.repo.ComentarioEntityRepository;
 import ucb.edu.bo.storebackend.repo.UsuarioEntityRepository;
 import ucb.edu.bo.storebackend.repo.UsuarioEntityRepositorySinJPA;
 
@@ -23,6 +26,9 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioEntityRepositorySinJPA usuarioEntityRepositorySinJPA;
+
+    @Autowired
+    private ComentarioEntityRepository comentarioEntityRepository;
 
     @GetMapping(path = "/todos")
     public @ResponseBody
@@ -39,6 +45,12 @@ public class UsuarioController {
     @GetMapping("comentarios/usuario/{id}")
     public @ResponseBody List<Object> getComentariosUsuario(@PathVariable("id")Long id){
         return usuarioEntityRepositorySinJPA.getComentarioPorUsuario(id);
+    }
+    @PutMapping("comentario")
+    public @ResponseBody String updateComment(@RequestBody ComentarioEntity comentario){
+        System.out.println(comentario);
+        comentarioEntityRepository.save(comentario);
+        return "Comentario Actualizado Correctamente";
     }
     @GetMapping("usuario/{id}")
     public @ResponseBody Optional<UsuarioEntity> getUser(@PathVariable("id")Long id){
