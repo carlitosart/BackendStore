@@ -57,6 +57,17 @@ GET http://localhost:8080/usuarios/usuario/2
 ###
 
 GET http://localhost:8080/usuarios/comentarios/usuario/2
+###
+PUT http://localhost:8080/usuarios/comentario
+Content-Type: application/json
+{
+  "idComentarios":1,
+  "contenido":"Nuevo contenido",
+  "fecha":"2022-06-03",
+  "usuario_id_usuario ":781,
+  "producto_id_producto":198,
+  "estado_comentario":0
+}
 ###Actualizar usuario por id
 PUT http://localhost:8080/usuarios/usuario/1
 Content-Type: application/json
