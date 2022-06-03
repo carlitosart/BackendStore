@@ -52,6 +52,22 @@ public class UsuarioController {
         comentarioEntityRepository.save(comentario);
         return "Comentario Actualizado Correctamente";
     }
+    @PutMapping("comentario/habilitar/{id}")
+    public @ResponseBody String habilitarComentario(@PathVariable("id")Integer id){
+        System.out.println(id);
+        ComentarioEntity ce=comentarioEntityRepository.findById(id).get();
+        ce.setEstado_comentario(1);
+        comentarioEntityRepository.save(ce);
+        return "Comentario Habilitado";
+    }
+    @PutMapping("comentario/deshabilitar/{id}")
+    public @ResponseBody String dehabilitarComentario(@PathVariable("id")Integer id){
+        System.out.println(id);
+        ComentarioEntity ce=comentarioEntityRepository.findById(id).get();
+        ce.setEstado_comentario(0);
+        comentarioEntityRepository.save(ce);
+        return "Comentario Deshabilitado";
+    }
     @GetMapping("usuario/{id}")
     public @ResponseBody Optional<UsuarioEntity> getUser(@PathVariable("id")Long id){
         return usuarioEntityRepository.findById(id);

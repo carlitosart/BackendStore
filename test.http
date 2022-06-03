@@ -69,6 +69,11 @@ Content-Type: application/json
   "producto_id_producto":198,
   "estado_comentario":0
 }
+###
+PUT http://localhost:8080/usuarios/comentario/habilitar/1
+###
+PUT http://localhost:8080/usuarios/comentario/deshabilitar/1
+
 ###Actualizar usuario por id
 PUT http://localhost:8080/usuarios/usuario/1
 Content-Type: application/json
