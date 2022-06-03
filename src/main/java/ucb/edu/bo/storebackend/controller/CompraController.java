@@ -5,13 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import ucb.edu.bo.storebackend.dto.dashBoardDto.ResponseDataInterce;
+import ucb.edu.bo.storebackend.dto.dashBoardDto.ResponseDataInterfaceCategori;
+import ucb.edu.bo.storebackend.dto.dashBoardDto.ResponsedataInterfaceTallas;
 import ucb.edu.bo.storebackend.mapping.CompraEntity;
-import ucb.edu.bo.storebackend.mapping.ProductoEntity;
 import ucb.edu.bo.storebackend.objAux.ComprasPorUsuario;
 import ucb.edu.bo.storebackend.repo.CompraEntityRepository;
 import ucb.edu.bo.storebackend.repo.CompraEntityRepositorySinJPA;
@@ -23,6 +24,11 @@ public class CompraController {
 
     @Autowired
     private CompraEntityRepository compraEntityRepository;
+
+    public CompraController(CompraEntityRepository compraEntityRepository) {
+        this.compraEntityRepository = compraEntityRepository;
+    }
+
     @Autowired
     private CompraEntityRepositorySinJPA cersinspa;
 
@@ -41,5 +47,28 @@ public class CompraController {
             listaVA.add(va);
         }
         return listaVA;
+    }
+
+    @RequestMapping(value= "/ventas", method = RequestMethod.GET)
+    public ResponseEntity<ResponseDataInterce> getVentasYear(@RequestParam Integer year){
+        ResponseDataInterce ventasYear = (ResponseDataInterce) compraEntityRepository.getVentasYear(year);
+        return new ResponseEntity<>(ventasYear, HttpStatus.OK);
+    }
+
+    @RequestMapping(value= "/ventas/categoria", method = RequestMethod.GET)
+    public ResponseEntity<List<ResponseDataInterfaceCategori>> getVentasYearCategori(@RequestParam Integer year, @RequestParam String categoria){
+        List<ResponseDataInterfaceCategori> ventasYearList = (List<ResponseDataInterfaceCategori>) compraEntityRepository.getVentasCategoria(year,categoria);
+        return new ResponseEntity<>(ventasYearList, HttpStatus.OK);
+    }
+
+    @RequestMapping(value= "/ventas/categorias", method = RequestMethod.GET)
+    public ResponseEntity<List<ResponsedataInterfaceTallas>> getVentasYearCategorias(@RequestParam Integer year){
+        List<ResponsedataInterfaceTallas> ventasYearList = (List<ResponsedataInterfaceTallas>) compraEntityRepository.getVentasCategorias(year);
+        return new ResponseEntity<>(ventasYearList, HttpStatus.OK);
+    }
+    @RequestMapping(value= "/ventas/tallas", method = RequestMethod.GET)
+    public ResponseEntity<List<ResponsedataInterfaceTallas>> getVentasYearTallas(@RequestParam Integer year){
+        List<ResponsedataInterfaceTallas> ventasYearList = (List<ResponsedataInterfaceTallas>) compraEntityRepository.getVentasTallas(year);
+        return new ResponseEntity<>(ventasYearList, HttpStatus.OK);
     }
 }
