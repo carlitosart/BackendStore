@@ -36,16 +36,16 @@ public interface CompraEntityRepository extends JpaRepository<CompraEntity, Inte
 
     @Query(value = "SELECT DISTINCT COUNT(categoria.id_categoria) as cantidad, categoria.nombre, SUM(producto.precio) as precioTotal " +
             "FROM producto " +
+            "INNER JOIN categoria " +
+            "on categoria.id_categoria = producto.id_categoria " +
             "INNER JOIN disponibilidad " +
             "on disponibilidad.id_producto = producto.id_producto " +
             "INNER JOIN compra_producto " +
             "on disponibilidad.id_disponibilidad = compra_producto.id_disponibilidad " +
             "INNER JOIN compra " +
             "on compra.id_compra = compra_producto.id_compra " +
-            "INNER JOIN categoria " +
-            "on categoria.id_categoria = producto.id_categoria " +
             "WHERE YEAR(compra.fecha) = :year " +
-            "GROUP BY categoria.id_categoria, compra.costo_total " +
+            "GROUP BY categoria.id_categoria " +
             "order by SUM(producto.precio) desc ",nativeQuery=true)
     List<ResponsedataInterfaceTallas> getVentasCategorias(Integer year);
 
