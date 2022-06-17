@@ -56,8 +56,13 @@ public class CompraController {
     }
 
     @RequestMapping(value= "/ventas/categoria", method = RequestMethod.GET)
-    public ResponseEntity<List<ResponseDataInterfaceCategori>> getVentasYearCategori(@RequestParam Integer year, @RequestParam String categoria){
+    public ResponseEntity<List<ResponseDataInterfaceCategori>> getVentasYearCategoria(@RequestParam Integer year, @RequestParam String categoria){
         List<ResponseDataInterfaceCategori> ventasYearList = (List<ResponseDataInterfaceCategori>) compraEntityRepository.getVentasCategoria(year,categoria);
+        return new ResponseEntity<>(ventasYearList, HttpStatus.OK);
+    }
+    @RequestMapping(value= "/ventas/categoria/top", method = RequestMethod.GET)
+    public ResponseEntity<List<ResponseDataInterfaceCategori>> getVentasYearCategoriaTop(@RequestParam Integer year, @RequestParam String categoria){
+        List<ResponseDataInterfaceCategori> ventasYearList = (List<ResponseDataInterfaceCategori>) compraEntityRepository.getVentasCategoriaTop(year,categoria);
         return new ResponseEntity<>(ventasYearList, HttpStatus.OK);
     }
 

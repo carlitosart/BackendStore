@@ -34,6 +34,23 @@ public interface CompraEntityRepository extends JpaRepository<CompraEntity, Inte
             "order by SUM(producto.precio) desc ",nativeQuery=true)
     List<ResponseDataInterfaceCategori> getVentasCategoria(Integer year, String categoria);
 
+    @Query(value = "SELECT DISTINCT COUNT(tienda_online.producto.id_producto) as cantidad, tienda_online.producto.nombre, SUM(tienda_online.producto.precio) as precioTotal "+
+                "FROM tienda_online.producto "+
+                "INNER JOIN tienda_online.categoria "+
+                "on tienda_online.categoria.id_categoria = tienda_online.producto.id_categoria "+
+                "INNER JOIN tienda_online.disponibilidad "+
+                "on tienda_online.disponibilidad.id_producto = tienda_online.producto.id_producto "+
+                "INNER JOIN tienda_online.compra_producto "+
+                "on tienda_online.disponibilidad.id_disponibilidad = tienda_online.compra_producto.id_disponibilidad "+
+                "INNER JOIN tienda_online.compra "+
+                "on tienda_online.compra.id_compra = tienda_online.compra_producto.id_compra "+
+                "WHERE YEAR(tienda_online.compra.fecha) = :year "+
+                "AND categoria.nombre = :categoria "+
+                "GROUP BY tienda_online.producto.id_producto "+
+                "order by cantidad desc "+
+                "Limit 3 ",nativeQuery=true)
+        List<ResponseDataInterfaceCategori> getVentasCategoriaTop(Integer year, String categoria);
+
     @Query(value = "SELECT DISTINCT COUNT(categoria.id_categoria) as cantidad, categoria.nombre, SUM(producto.precio) as precioTotal " +
             "FROM producto " +
             "INNER JOIN categoria " +
@@ -46,7 +63,8 @@ public interface CompraEntityRepository extends JpaRepository<CompraEntity, Inte
             "on compra.id_compra = compra_producto.id_compra " +
             "WHERE YEAR(compra.fecha) = :year " +
             "GROUP BY categoria.id_categoria " +
-            "order by SUM(producto.precio) desc ",nativeQuery=true)
+            "order by SUM(producto.precio) desc "+
+            "LIMIT 3",nativeQuery=true)
     List<ResponsedataInterfaceTallas> getVentasCategorias(Integer year);
 
     @Query(value = "SELECT DISTINCT COUNT(tienda_online.disponibilidad.id_talla) as cantidad, tienda_online.talla.nombre, SUM(tienda_online.compra.costo_total) as precioTotal " +
