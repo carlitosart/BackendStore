@@ -58,6 +58,7 @@ public class PDFTest {
         fontParagraph.setSize(12);
 
         var resul = compraEntityRepository.findById(id);
+        
         if (resul.isPresent()){
 
             CompraEntity  compratest = resul.get();

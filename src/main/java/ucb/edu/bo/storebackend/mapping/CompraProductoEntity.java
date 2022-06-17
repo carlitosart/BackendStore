@@ -15,9 +15,8 @@ public class CompraProductoEntity {
     @Basic
     @Column(name = "id_compra", nullable = false)
     private int idCompra;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "new_column", nullable = false)
+    @Column(name = "new_column", nullable = true)
     private int newColumn;
 
     public int getIdDisponibilidad() {

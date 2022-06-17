@@ -2,9 +2,9 @@ POST http://localhost:8080/comprapr/add
 Content-Type: application/json
 
 {
-  "idDisponibilidad": 1,
-  "cantidad": 1,
-  "idCompra": 2
+  "idDisponibilidad": 4,
+  "cantidad": 10,
+  "idCompra": 5
 }
 
 ###
@@ -12,9 +12,9 @@ POST http://localhost:8080/compra/add
 Content-Type: application/json
 
 {
-  "fecha": 1564061013564,
+  "fecha": "2020-03-16",
   "idUsuario": 1,
-  "costoTotal": 15.5
+  "costoTotal": 150.5
 }
 ###Obtener compras de un usuario por id
 GET http://localhost:8080/compra/todos/usuario/2
@@ -212,3 +212,13 @@ PUT http://localhost:8080/productos/habilitar/3
 ### Deshabilitar producto
 
 PUT  http://localhost:8080/productos/deshabilitar/3
+
+
+
+
+
+###Ver ventas de productos
+GET http://localhost:8080/compra/ventas/years
+
+###Ver ventas de productos
+GET http://localhost:8080/compra/ventas/productos?year=1998

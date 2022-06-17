@@ -16,8 +16,7 @@ public class CompraProductoController {
     private CompraProductoEntityRepository compraProductoEntityRepository;
 
     @PostMapping(path = "add")
-    public @ResponseBody String addCompaPro(@RequestBody CompraProductoEntity compraProductoEntity){
-        compraProductoEntityRepository.save(compraProductoEntity);
-        return "Compra Producto DONE";
+    public @ResponseBody CompraProductoEntity addCompaPro(@RequestBody CompraProductoEntity compraProductoEntity){
+        return compraProductoEntityRepository.save(compraProductoEntity);
     }
 }

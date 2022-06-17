@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ucb.edu.bo.storebackend.dto.dashBoardDto.ResponseDataInterce;
 import ucb.edu.bo.storebackend.dto.dashBoardDto.ResponseDataInterfaceCategori;
+import ucb.edu.bo.storebackend.dto.dashBoardDto.ResponseDataInterfaceYear;
 import ucb.edu.bo.storebackend.dto.dashBoardDto.ResponsedataInterfaceTallas;
 import ucb.edu.bo.storebackend.mapping.CompraEntity;
 import ucb.edu.bo.storebackend.objAux.ComprasPorUsuario;
@@ -33,9 +34,8 @@ public class CompraController {
     private CompraEntityRepositorySinJPA cersinspa;
 
     @PostMapping(path = "/add")
-    public @ResponseBody String addNewCompra (@RequestBody CompraEntity compra){
-        compraEntityRepository.save(compra);
-        return "Compra Guardada";
+    public @ResponseBody CompraEntity addNewCompra (@RequestBody CompraEntity compra){
+        return compraEntityRepository.save(compra);
     }
     @GetMapping(path = "/todos/usuario/{id}")
     public @ResponseBody ArrayList<ComprasPorUsuario> getComprasUsuario (@PathVariable("id")int id){
@@ -71,4 +71,17 @@ public class CompraController {
         List<ResponsedataInterfaceTallas> ventasYearList = (List<ResponsedataInterfaceTallas>) compraEntityRepository.getVentasTallas(year);
         return new ResponseEntity<>(ventasYearList, HttpStatus.OK);
     }
+
+    @RequestMapping(value= "/ventas/productos", method = RequestMethod.GET)
+    public ResponseEntity<List<ResponsedataInterfaceTallas>> getVentasYearProductos(@RequestParam Integer year){
+        List<ResponsedataInterfaceTallas> ventasYearList = (List<ResponsedataInterfaceTallas>) compraEntityRepository.getVentasProductoYear(year);
+        return new ResponseEntity<>(ventasYearList, HttpStatus.OK);
+    }
+
+    @RequestMapping(value= "/ventas/years", method = RequestMethod.GET)
+    public ResponseEntity<List<ResponseDataInterfaceYear>> getVentasYears(){
+        List<ResponseDataInterfaceYear> ventasYearList = (List<ResponseDataInterfaceYear>) compraEntityRepository.getYears();
+        return new ResponseEntity<>(ventasYearList, HttpStatus.OK);
+    }
+
 }

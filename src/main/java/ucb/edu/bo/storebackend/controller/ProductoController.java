@@ -25,7 +25,7 @@ public class ProductoController {
     private ProductoEntityRepository productoEntityRepository;
 
     @PostMapping(path = "/add")
-    public @ResponseBody ProductoEntity addNewProducto (@RequestBody ProductoEntity producto){
+    public  ProductoEntity addNewProducto (@RequestBody ProductoEntity producto){
         return productoEntityRepository.save(producto);
     }
 
